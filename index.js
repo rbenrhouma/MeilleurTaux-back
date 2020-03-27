@@ -1,3 +1,6 @@
+require("dotenv").config(); // As early as possible in your application, require and configure dotenv.
+// Permet d'activer les variables d'environnement qui se trouvent dans le fichier .env
+
 const express = require("express");
 const mongoose = require("mongoose"); // for db
 const middlewareCors = require("cors");
