@@ -1,4 +1,4 @@
-require("dotenv").config(); // As early as possible in your application, require and configure dotenv.
+// require("dotenv").config(); // As early as possible in your application, require and configure dotenv.
 // Permet d'activer les variables d'environnement qui se trouvent dans le fichier .env
 
 const express = require("express");
