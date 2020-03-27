@@ -3,13 +3,14 @@
 
 const express = require("express");
 const mongoose = require("mongoose"); // for db
-const middlewareCors = require("cors");
-const middleware = require("express-formidable");
+
+// const middlewareCors = require("cors");
+// const middleware = require("express-formidable");
 
 // placer des middlewares
 const app = express();
-app.use(middlewareCors());
-app.use(middleware());
+// app.use(middlewareCors());
+// app.use(middleware());
 
 //Connection mongoose DB
 mongoose.connect(process.env.MONGODB_URI, {
@@ -17,14 +18,12 @@ mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true
 });
 
-//import backoffice routes
 const backOfficeRoute = require("./Routes/backoffice");
 app.use(backOfficeRoute);
 app.get("/", (req, res) => {
   res.send("Test");
 });
 
-//import devis routes
 const devisRoute = require("./Routes/devis");
 app.use(devisRoute);
 
