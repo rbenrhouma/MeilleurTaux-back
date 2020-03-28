@@ -46,8 +46,7 @@ app.all("*", (req, res) => {
   res.status(404).send({ message: "Page introuvable" });
 });
 
-const port = process.env.PORT || 5000;
 // Remarquez que le `app.listen` doit se trouver après les déclarations des routes
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server démarré serveur ${port}`);
 });
