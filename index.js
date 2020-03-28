@@ -12,10 +12,10 @@ const app = express();
 // app.use(middlewareCors());
 // app.use(middleware());
 
-// mongoose.connect(process.env.MONGODB_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 let currentDataBase = "Devis";
 mongoose.connect(
