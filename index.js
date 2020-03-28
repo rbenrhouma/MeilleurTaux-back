@@ -12,11 +12,25 @@ const app = express();
 // app.use(middlewareCors());
 // app.use(middleware());
 
-//Connection mongoose DB
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+// mongoose.connect(process.env.MONGODB_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
+
+let currentDataBase = "Devis";
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/" + currentDataBase,
+  { useUnifiedTopology: true, useNewUrlParser: true },
+  err => {
+    if (!err) {
+      console.log("Connexion to MongoDB succeeded...");
+    } else {
+      console.log(
+        "Error in DB Connexion: " + JSON.stringify(err, undefined, 2)
+      );
+    }
+  }
+);
 
 const backOfficeRoute = require("./Routes/backoffice");
 app.use(backOfficeRoute);
@@ -32,7 +46,8 @@ app.all("*", (req, res) => {
   res.status(404).send({ message: "Page introuvable" });
 });
 
+const port = process.env.PORT || 5000;
 // Remarquez que le `app.listen` doit se trouver après les déclarations des routes
-app.listen(process.env.PORT, () => {
-  console.log("Server démarré");
+app.listen(port, () => {
+  console.log(`Server démarré serveur ${port}`);
 });
