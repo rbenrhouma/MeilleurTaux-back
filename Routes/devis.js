@@ -63,7 +63,6 @@ router.post("/devis/save", async (req, res) => {
       total: req.fields.total,
       email: req.fields.email
 
-      // A completer .....
     });
     // Sauvegarde de devis + envois de mail
 
