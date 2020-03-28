@@ -34,25 +34,35 @@ router.post("/devis/save", async (req, res) => {
     req.fields.typeBien &&
     req.fields.montant &&
     req.fields.country &&
-    req.fields.postalCity &&
+    req.fields.zipCode &&
     req.fields.email &&
     req.fields.total !== undefined
   ) {
     //Creation d'un nouveau Devis
     const newDevis = new Devis({
       //Generation number alléatoire
-      numDevis: generator.generate({
+      key: generator.generate({
         length: 8,
         numbers: true,
         uppercase: false,
         exclude: "abcdefghijklmnopqrstuvwxyz"
       }),
       typeBien: req.fields.typeBien,
-      montant: req.fields.montant,
+      etatBien: req.fields.etatBien,
+      usageBien: req.fields.usageBien,
+      situationUser: req.fields.situationUser,
+      typeBienLib: req.fields.typeBienLib,
+      etatBienLib: req.fields.etatBienLib,
+      usageBienLib: req.fields.usageBienLib,
+      situationUserLib: req.fields.situationUserLib,
       country: req.fields.country,
-      postalCity: req.fields.postalCity,
-      email: req.fields.email,
-      total: req.fields.total
+      zipCode: req.fields.zipCode,
+      montant: req.fields.montant,
+      travaux: req.fields.travaux,
+      notaire: req.fields.notaire,
+      total: req.fields.total,
+      email: req.fields.email
+
       // A completer .....
     });
     // Sauvegarde de devis + envois de mail
