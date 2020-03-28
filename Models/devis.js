@@ -21,3 +21,11 @@ const Devis = mongoose.model("devis", {
 });
 
 module.exports = Devis;
+
+
+
+
+
+
+
+module.exports = Service;
