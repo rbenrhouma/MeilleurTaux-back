@@ -19,7 +19,7 @@ const app = express();
 
 let currentDataBase = "Devis";
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/" + currentDataBase,
+  process.env.MONGODB_URI,
   { useUnifiedTopology: true, useNewUrlParser: true },
   err => {
     if (!err) {
